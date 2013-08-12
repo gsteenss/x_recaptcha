@@ -23,10 +23,11 @@ class Controller_ReCaptcha extends \Controller {
     public $isCaptchaOk = false;
 
     // settings
-    public $view_id = 'recaptcha';
+    public $view_name = 'recaptcha';
 
     function init() {
         parent::init();
+
         if (/*get_class($this->owner)!='Form' ||*/ !is_subclass_of($this->owner,'Form')) {
             throw $this->exception('ReCaptcha can be connected to Form only. You tried to connect to '.get_class($this->owner));
         }
@@ -71,7 +72,7 @@ class Controller_ReCaptcha extends \Controller {
     }
     private function addCaptcha() {
         if (!$this->isCaptchaOk) {
-            $this->owner->add('View',$this->view_id,null,array('view/recaptcha_field'))->setHTML(
+            $this->owner->add('View',$this->view_name/*,null,array('view/recaptcha_field')*/)->setHTML(
                 recaptcha_get_html($this->publickey, $this->error)
             );
         }

@@ -24,10 +24,10 @@ Add to config of your project API keys (it should work fine on localhost with no
 
 In Form
 
-    $this->add('x_recaptcha/Controller_ReCaptcha',array());
+    $this->add('x_recaptcha/Controller_ReCaptcha');
 
 After Form submition
 
     if (!$this->recaptcha->isCaptchaOk) {
-        $this->js()->univ()->alert('wrong')->execute();
+        $this->js(null,'Recaptcha.reload()')->univ()->alert('wrong')->execute();
     }
