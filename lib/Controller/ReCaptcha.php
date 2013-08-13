@@ -28,7 +28,9 @@ class Controller_ReCaptcha extends \Controller {
     function init() {
         parent::init();
 
-        if (/*get_class($this->owner)!='Form' ||*/ !is_subclass_of($this->owner,'Form')) {
+        if (
+            !(get_class($this->owner)=='Form' || is_subclass_of($this->owner,'Form'))
+        ) {
             throw $this->exception('ReCaptcha can be connected to Form only. You tried to connect to '.get_class($this->owner));
         }
 
