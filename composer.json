@@ -1,0 +1,11 @@
+{
+    "name": "rvadym/x_recaptcha",
+    "type": "library",
+    "keywords": ["blog","atk4"],
+    "homepage": "https://github.com/rvadym/x_recaptcha",
+    "source": {
+        "url": "git@github.com:rvadym/x_recaptcha.git",
+        "type": "git",
+        "reference": "origin/4.3"
+    }
+}
