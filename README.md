@@ -24,7 +24,7 @@ Add to config of your project API keys (it should work fine on localhost with no
 
 In Form
 
-    $this->add('x_recaptcha/Controller_ReCaptcha');
+    $this->add('rvadym/x_recaptcha/Controller_ReCaptcha');
 
 After Form submition
 
