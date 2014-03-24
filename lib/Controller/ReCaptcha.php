@@ -6,7 +6,7 @@
  * Time: 4:43 PM
  * To change this template use File | Settings | File Templates.
  */
-namespace x_recaptcha;
+namespace rvadym\x_recaptcha;
 require_once __DIR__.'/../../vendor/recaptchalib.php';
 class Controller_ReCaptcha extends \Controller {
 
@@ -43,13 +43,13 @@ class Controller_ReCaptcha extends \Controller {
 
 
 		// add add-on locations to pathfinder
-		$l = $this->api->locate('addons',__NAMESPACE__,'location');
-		$addon_location = $this->api->locate('addons',__NAMESPACE__);
-		$this->api->pathfinder->addLocation($addon_location,array(
-			//'js'=>'templates/js',
-			//'css'=>'templates/css',
-            'template'=>'templates',
-		))->setParent($l);
+//		$l = $this->api->locate('addons',__NAMESPACE__,'location');
+//		$addon_location = $this->api->locate('addons',__NAMESPACE__);
+//		$this->api->pathfinder->addLocation($addon_location,array(
+//			//'js'=>'templates/js',
+//			//'css'=>'templates/css',
+//            'template'=>'templates',
+//		))->setParent($l);
 
 
         $this->owner->recaptcha = $this;
@@ -74,9 +74,11 @@ class Controller_ReCaptcha extends \Controller {
     }
     private function addCaptcha() {
         if (!$this->isCaptchaOk) {
-            $this->owner->add('View',$this->view_name/*,null,array('view/recaptcha_field')*/)->setHTML(
+            $wrapper = $this->owner->add('View')->addClass('atk-form-row atk-cells atk-form-row-line ');
+            $wrapper->add('View')->addClass('atk-cell atk-form-label atk-text-nowrap')->setHTML('&nbsp;');
+            $wrapper->add('View',$this->view_name/*,null,array('view/recaptcha_field')*/)->setHTML(
                 recaptcha_get_html($this->publickey, $this->error)
-            );
+            )->addClass('atk-cell atk-form-field atk-jackscrew ');
         }
     }
 }
